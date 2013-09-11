@@ -1,0 +1,13 @@
+apply plugin: 'run-simple'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.1.6'
+}
+
+runSimple {
+    main = 'com.kronos.sandbox.RunIt'
+}

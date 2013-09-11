@@ -1,0 +1,22 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs '../build/libs/buildings/myMavenName/1.0'
+        }
+    }
+    dependencies {
+        classpath group: 'buildings', name: 'myMavenName', version: '1.0'
+    }
+}
+
+apply plugin: 'run-simple'
+
+repositories {
+    mavenCentral()
+}
+
+runSimple {
+    main = 'com.kronos.sandbox.RunIt'
+}
