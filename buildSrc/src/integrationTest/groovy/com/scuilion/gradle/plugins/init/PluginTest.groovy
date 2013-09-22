@@ -11,7 +11,8 @@ class PluginTest{
     
     @Test
     public void checkRun(){
-        def connection = GradleConnector.newConnector().forProjectDirectory(new File('buier')).connect();
+        def integrationBuildLocation = new File(System.getProperty('integrationTest.location'), 'buier')
+        def connection = GradleConnector.newConnector().forProjectDirectory(integrationBuildLocation).connect();
         try {
             def build = connection.newBuild()
             

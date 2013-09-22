@@ -61,6 +61,7 @@ uploadArchives {
 task intTest(type: Test){
     dependsOn uploadArchives
     dependsOn integrationTestClasses
+    systemProperties['integrationTest.location'] = new File(sourceSets.integrationTest.output.resourcesDir, 'pluginTest').absolutePath
 
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.main.output
