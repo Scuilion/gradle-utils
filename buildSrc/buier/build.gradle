@@ -1,9 +1,10 @@
+apply plugin: 'maven'
 
 buildscript {
     repositories {
         mavenCentral()
-        flatDir {
-            dirs '../build/libs/buildings/myMavenName/1.0'
+        maven {
+            url "file:${projectDir}/../build/libs/buildings/myMavenName/1.0'
         }
     }
     dependencies {
@@ -17,6 +18,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compile localGroovy()
+}
+
 runSimple {
-    main = 'com.kronos.sandbox.RunIt'
+    main = 'com.RunSimple'
 }

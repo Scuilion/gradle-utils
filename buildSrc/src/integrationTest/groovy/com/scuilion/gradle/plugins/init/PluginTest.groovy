@@ -11,8 +11,6 @@ class PluginTest{
     
     @Test
     public void checkRun(){
-        Project project = ProjectBuilder.builder().withName('RunSimplePlugin').build()
-        project.apply plugin: 'run-simple'
         def connection = GradleConnector.newConnector().forProjectDirectory(new File('buier')).connect();
         try {
             def build = connection.newBuild()

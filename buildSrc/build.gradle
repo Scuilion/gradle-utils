@@ -46,7 +46,7 @@ uploadArchives {
     dependsOn pluginJar
     repositories {
         mavenDeployer {
-            repository(url: "file:build/libs")
+            repository(url: "file:${projectDir}/build/libs")
             pom.version = '1.0'
             pom.artifactId = 'myMavenName'
             pom.groupId = 'buildings'
