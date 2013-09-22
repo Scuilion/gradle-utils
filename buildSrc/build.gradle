@@ -1,6 +1,7 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+
 repositories {
     mavenCentral()
 }
@@ -47,9 +48,12 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: "file:${projectDir}/build/libs")
-            pom.version = '1.0'
-            pom.artifactId = 'myMavenName'
-            pom.groupId = 'buildings'
+            pom.version = '0.1'
+            pom.artifactId = 'gradleUtils'
+            pom.groupId = 'com.scuilion.plugins'
+            //pom.version = '1.0'
+            //pom.artifactId = 'myMavenName'
+            //pom.groupId = 'buildings'
         }
     }
 }

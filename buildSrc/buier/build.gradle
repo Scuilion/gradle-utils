@@ -4,11 +4,11 @@ buildscript {
     repositories {
         mavenCentral()
         maven {
-            url "file:${projectDir}/../build/libs/buildings/myMavenName/1.0'
+            url "file:${projectDir}/../build/libs"
         }
     }
     dependencies {
-        classpath group: 'buildings', name: 'myMavenName', version: '1.0'
+        classpath group: 'com.scuilion.plugins', name: 'gradleUtils', version: '0.1'
     }
 }
 
