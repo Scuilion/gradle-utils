@@ -22,6 +22,5 @@ dependencies {
     compile localGroovy()
 }
 
-runSimple {
-    main = 'com.RunSimple'
-}
+println 'does what'
+runSimple.mainClass = 'com.RunAlternative'

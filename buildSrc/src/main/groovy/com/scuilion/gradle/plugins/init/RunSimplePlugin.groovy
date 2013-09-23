@@ -10,18 +10,20 @@ import org.apache.commons.lang.SystemUtils
 
 class RunSimplePlugin implements Plugin<Project> {
 
-    Project project 
+   Project project 
 
-    void apply(Project myProject) {
+   void apply(Project project) {
+      project.extensions.runSimple = new RunSimplePluginExtension()
+      project.plugins.apply(BasePlugin.class)
+      project.plugins.apply(GroovyPlugin.class)
 
-        project = myProject
-        project.plugins.apply(BasePlugin.class)
-        project.plugins.apply(GroovyPlugin.class)
+      project.task('runSimple', type: JavaExec ) {
+         println 'main class is: ' + project.runSimple.mainClass
+         main = project.runSimple.mainClass                   
+         classpath = project.sourceSets.main.runtimeClasspath
+      }
 
-        project.task('runSimple', type: JavaExec ) {
-            classpath = project.sourceSets.main.runtimeClasspath
-        }
-        println SystemUtils.IS_OS_WINDOWS 
+      println SystemUtils.IS_OS_WINDOWS 
 
-    }
+   }
 }
