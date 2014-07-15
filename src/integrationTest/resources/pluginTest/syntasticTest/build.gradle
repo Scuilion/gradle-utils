@@ -10,11 +10,16 @@ buildscript {
     }
 }
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
 apply plugin: 'groovy'
 
 dependencies {
     compile localGroovy()
+    compile 'com.google.guava:guava:17.0'//just for syntastic file
 }
 
 apply plugin: 'run-simple'
-runSimple.mainClass = 'com.RunAlternative'
