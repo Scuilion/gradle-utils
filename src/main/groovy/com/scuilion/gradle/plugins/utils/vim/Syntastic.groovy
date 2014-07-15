@@ -22,7 +22,6 @@ class Syntastic {
         }
     }
     static private void addSrcDirs(project, classpathFiles){
-        println project.metaClass.methods*.name.sort().unique() 
         if(project.hasProperty('sourceSets')){
             project.sourceSets.each { srcSet ->
                 srcSet.java.srcDirs.each { dir ->
