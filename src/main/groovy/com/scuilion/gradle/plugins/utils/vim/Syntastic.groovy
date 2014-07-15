@@ -8,16 +8,8 @@ class Syntastic {
         project.task('createSyntastic') {
             def classpathFiles = new HashSet<String>()
             def addJars = { proj ->
-                proj.configurations.each { conf ->
-                    conf.each { jar ->
-                        classpathFiles.add(jar)
-                    }
-                }
-                proj.sourceSets.each { srcSet ->
-                    srcSet.java.srcDirs.each { dir ->
-                        classpathFiles.add(dir.absolutePath)
-                    }
-                }
+                addJarDeps(proj, classpathFiles)
+                addSrcDirs(proj, classpathFiles)
             }
             project.getChildProjects().each { proj ->
                 addJars(proj.value)
@@ -27,6 +19,23 @@ class Syntastic {
             def configFile = new File(project.rootProject.projectDir.absolutePath + "/.syntastic_javac_config")
             def classpathListed = classpathFiles.collect().join(";")
             configFile.text = 'let g:syntastic_java_javac_classpath = "' + classpathListed + '"'
+        }
+    }
+    static private void addSrcDirs(project, classpathFiles){
+        println project.metaClass.methods*.name.sort().unique() 
+        if(project.hasProperty('sourceSets')){
+            project.sourceSets.each { srcSet ->
+                srcSet.java.srcDirs.each { dir ->
+                    classpathFiles.add(dir.absolutePath)
+                }
+            }
+        }
+    }
+    static private void addJarDeps(Project project, HashSet<String> classpathFiles){
+        project.configurations.each { conf ->
+            conf.each { jar ->
+                classpathFiles.add(jar)
+            }
         }
     }
 }

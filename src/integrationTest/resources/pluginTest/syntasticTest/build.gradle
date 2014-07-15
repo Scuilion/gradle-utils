@@ -22,4 +22,4 @@ dependencies {
     compile 'com.google.guava:guava:17.0'//just for syntastic file
 }
 
-apply plugin: 'run-simple'
+apply plugin: 'utils'

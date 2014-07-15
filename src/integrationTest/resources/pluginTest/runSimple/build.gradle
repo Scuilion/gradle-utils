@@ -16,5 +16,5 @@ dependencies {
     compile localGroovy()
 }
 
-apply plugin: 'run-simple'
+apply plugin: 'utils'
 runSimple.mainClass = 'com.RunAlternative'
