@@ -1,13 +1,69 @@
-apply plugin: 'run-simple'
+apply plugin: 'maven-publish'
+apply plugin: 'groovy'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.1.6'
+    compile gradleApi()
+    compile localGroovy()
+
+    testCompile 'junit:junit-dep:4.11'
 }
 
-/*runSimple {
-    main = 'com.kronos.sandbox.RunIt'
-}*/
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.scuilion.gradle'
+            artifactId 'utils'
+            version '0.1'
+            from components.java
+        }
+    }
+}
+
+//Add funtional test
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+
+    integrationTestCompile.extendsFrom compile
+    integrationTestRuntime.extendsFrom runtime
+}
+
+sourceSets {
+    integrationTest {
+        java {
+            srcDir 'src/integrationTest/java'
+        }
+        resources {
+            srcDir 'src/integrationTest/resources'
+        }
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
+    }
+}
+
+task integrationTest(type:Test){
+    dependsOn integrationTestClasses
+
+    systemProperties['integrationTest.location'] = new File(sourceSets.integrationTest.output.resourcesDir, 'pluginTest').absolutePath
+
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.main.output 
+
+    getReports().getHtml().setDestination(new File("$project.reporting.baseDir", 'integrationTest'))
+    getReports().getJunitXml().setDestination(new File("$project.buildDir", 'functional-results')) 
+}
+integrationTest.mustRunAfter test

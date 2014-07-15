@@ -1,0 +1,24 @@
+apply plugin: 'maven'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.1'
+    }
+}
+
+apply plugin: 'run-simple'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile localGroovy()
+    //compile 'org.apache.commons:commons-lang3:3.0'
+}
+
+runSimple.mainClass = 'com.RunAlternative'
