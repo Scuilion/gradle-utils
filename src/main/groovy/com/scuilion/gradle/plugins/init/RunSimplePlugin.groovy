@@ -11,14 +11,15 @@ class RunSimplePlugin implements Plugin<Project> {
    Project project 
 
    void apply(Project project) {
-      project.extensions.runSimple = new RunSimplePluginExtension()
-      project.plugins.apply(BasePlugin.class)
-      project.plugins.apply(GroovyPlugin.class)
+      project.extensions.create("runSimple", RunSimplePluginExtension)
 
       project.task('runSimple', type: JavaExec ) {
-         println 'main class is: ' + project.runSimple.mainClass
-         main = project.runSimple.mainClass                   
-         classpath = project.sourceSets.main.runtimeClasspath
+         project.afterEvaluate{
+             println 'main class is: ' + project.runSimple.mainClass
+
+             main = project.runSimple.mainClass
+             classpath = project.sourceSets.main.runtimeClasspath
+         }
       }
    }
 }

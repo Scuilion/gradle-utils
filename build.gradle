@@ -9,6 +9,7 @@ dependencies {
     compile gradleApi()
     compile localGroovy()
 
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
     testCompile 'junit:junit-dep:4.11'
 }
 
@@ -56,6 +57,7 @@ sourceSets {
 }
 
 task integrationTest(type:Test){
+    dependsOn publishToMavenLocal
     dependsOn integrationTestClasses
 
     systemProperties['integrationTest.location'] = new File(sourceSets.integrationTest.output.resourcesDir, 'pluginTest').absolutePath

@@ -10,15 +10,11 @@ buildscript {
     }
 }
 
+apply plugin: 'groovy'
 apply plugin: 'run-simple'
-
-repositories {
-    mavenCentral()
-}
+runSimple.mainClass = 'com.RunAlternative'
 
 dependencies {
     compile localGroovy()
-    //compile 'org.apache.commons:commons-lang3:3.0'
 }
 
-runSimple.mainClass = 'com.RunAlternative'
