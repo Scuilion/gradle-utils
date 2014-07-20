@@ -1,3 +1,5 @@
+version '0.3'
+
 //plugins {
 //  id "com.jfrog.artifactory" version "3.0.0"
 //}
@@ -37,7 +39,6 @@ task sourceJar(type: Jar) {
 artifacts {
     archives jar, sourceJar
 }
-version '0.2'
 
 publishing {
     publications {
