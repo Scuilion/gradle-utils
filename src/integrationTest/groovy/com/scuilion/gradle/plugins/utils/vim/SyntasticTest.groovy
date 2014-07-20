@@ -1,4 +1,4 @@
-package com.scuilion.gradle.plugins.init
+package com.scuilion.gradle.plugins.utils.init
 
 import org.junit.Test
 

@@ -17,7 +17,8 @@ class Syntastic {
             addJars(project.rootProject)
 
             def configFile = new File(project.rootProject.projectDir.absolutePath + "/.syntastic_javac_config")
-            def classpathListed = classpathFiles.collect().join(";")
+
+            def classpathListed = classpathFiles.collect().join(File.pathSeparator)
             configFile.text = 'let g:syntastic_java_javac_classpath = "' + classpathListed + '"'
         }
     }
