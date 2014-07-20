@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.1'
+        classpath group: 'com.scuilion.gradle', name: 'utils', version: System.properties['version']
     }
 }
 
