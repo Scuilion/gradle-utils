@@ -1,6 +1,7 @@
 package com.scuilion.gradle.plugins.utils.vim
 
 import org.gradle.api.Project
+import org.gradle.api.tasks.Copy
 
 class Syntastic {
 
@@ -11,17 +12,33 @@ class Syntastic {
                 addJarDeps(proj, classpathFiles)
                 addSrcDirs(proj, classpathFiles)
             }
+
             project.getChildProjects().each { proj ->
                 addJars(proj.value)
             }
             addJars(project.rootProject)
+            def outputFile = project.file(project.rootProject.projectDir.absolutePath + "/.syntastic_javac_config")
+            inputs.property "classpath", getClassPathListed(classpathFiles) 
+            outputs.file outputFile
+            doLast{
+                outputFile.write ''
+                outputFile.write inputs.properties.classpath
+            }
+        }
+        attachTo(project, 'compileJava')
+        attachTo(project, 'compileGroovy')
+    }
 
-            def configFile = new File(project.rootProject.projectDir.absolutePath + "/.syntastic_javac_config")
-
-            def classpathListed = classpathFiles.collect().join(File.pathSeparator)
-            configFile.text = 'let g:syntastic_java_javac_classpath = "' + classpathListed + '"'
+    static private void attachTo(Project project, String lang){
+        if(project.tasks.findByName(lang)){
+            project.tasks.getByName(lang).dependsOn('createSyntastic')
         }
     }
+
+    static private String getClassPathListed(def classpathFiles){
+        return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect().join(File.pathSeparator) + '"'
+    }
+
     static private void addSrcDirs(project, classpathFiles){
         if(project.hasProperty('sourceSets')){
             project.sourceSets.each { srcSet ->
@@ -31,6 +48,7 @@ class Syntastic {
             }
         }
     }
+
     static private void addJarDeps(Project project, HashSet<String> classpathFiles){
         project.configurations.each { conf ->
             conf.each { jar ->

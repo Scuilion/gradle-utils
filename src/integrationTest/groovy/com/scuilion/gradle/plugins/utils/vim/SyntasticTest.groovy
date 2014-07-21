@@ -20,16 +20,14 @@ class SyntasticTest{
         try {
             def build = connection.newBuild()
             build.forTasks('createSyntastic')
-            //build.forTasks('tasks')
-            //build.setStandardOutput(output)
             build.run()
         } catch (Exception e) {
             throw new GradleConnectionException("Build execution failed.", e);
         } finally {
             connection.close();
         }
-
-        //assertThat(output.toString(), containsString('running alternative class'))
+        def syntasticConfig = new File(integrationBuildLocation, ".syntastic_javac_config")
+        assertTrue(syntasticConfig.exists())
     }
 
 }
