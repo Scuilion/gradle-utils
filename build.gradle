@@ -11,7 +11,7 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
     }
 }
-    apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.jfrog.bintray'
 
 apply plugin: 'maven-publish'
 apply plugin: 'groovy'
@@ -47,10 +47,6 @@ publishing {
             artifactId 'utils'
             version version
             from components.java
-
-            /*artifact sourceJar {
-                classifier "sources"
-            }*/
         }
     }
 }
@@ -88,9 +84,7 @@ task integrationTest(type:Test){
     classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.main.output 
 
     getReports().getHtml().setDestination(new File("$project.reporting.baseDir", 'integrationTest'))
-    getReports().getJunitXml().setDestination(new File("$project.buildDir", 'functional-results')) 
+    getReports().getJunitXml().setDestination(new File("$project.buildDir", 'integration-results')) 
 }
+
 integrationTest.mustRunAfter test
-
-
-

@@ -13,9 +13,9 @@ class RunSimple {
 
         project.task('runSimple', type: JavaExec ) {
             project.afterEvaluate{
-
                 main = project.runSimple.mainClass
                 classpath = project.sourceSets.main.runtimeClasspath
+                args = project.runSimple.args
             }
         }
     }
