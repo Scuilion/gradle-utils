@@ -36,7 +36,8 @@ class Syntastic {
     }
 
     static private String getClassPathListed(def classpathFiles){
-        return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect().join(File.pathSeparator) + '"'
+        //return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect().join(File.pathSeparator) + '"'
+        return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect().join('/') + '"'
     }
 
     static private void addSrcDirs(project, classpathFiles){

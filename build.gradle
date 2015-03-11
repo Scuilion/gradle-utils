@@ -1,16 +1,19 @@
-version '0.3'
-
-//plugins {
-//  id "com.jfrog.artifactory" version "3.0.0"
-//}
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
-    }
+plugins {
+    id "com.jfrog.bintray" version "1.0"
 }
+
+// buildscript {
+//     repositories {
+//         jcenter()
+//     }
+//     dependencies {
+//         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
+//     }
+// }
+
+//version '0.4'
+
+apply from: 'bintray.gradle'
 apply plugin: 'com.jfrog.bintray'
 
 apply plugin: 'maven-publish'
@@ -20,7 +23,6 @@ repositories {
     mavenCentral()
 }
 
-apply from: 'bintray.gradle'
 
 dependencies {
     compile gradleApi()
