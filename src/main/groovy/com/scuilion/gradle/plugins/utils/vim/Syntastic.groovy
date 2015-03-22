@@ -7,7 +7,7 @@ class Syntastic {
 
     static void addTask(Project project) {
         project.task('createSyntastic') {
-            def classpathFiles = new HashSet<String>()
+            def classpathFiles = new HashSet<File>()
             def addJars = { proj ->
                 addJarDeps(proj, classpathFiles)
                 addSrcDirs(proj, classpathFiles)
@@ -36,15 +36,14 @@ class Syntastic {
     }
 
     static private String getClassPathListed(def classpathFiles){
-        //return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect().join(File.pathSeparator) + '"'
-        return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect().join('/') + '"'
+        return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.collect({it.getCanonicalPath().replaceAll('\\\\', '/')}).join(';') + '"'
     }
 
     static private void addSrcDirs(project, classpathFiles){
         if(project.hasProperty('sourceSets')){
             project.sourceSets.each { srcSet ->
                 srcSet.java.srcDirs.each { dir ->
-                    classpathFiles.add(dir.absolutePath)
+                    classpathFiles.add(new File(dir.absolutePath))
                 }
             }
         }
