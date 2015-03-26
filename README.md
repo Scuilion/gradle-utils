@@ -1,6 +1,6 @@
 # gradle-utils
 
-A person gradle plugin to work better.
+A personal gradle plugin to work better.
 
 ##### Added Task 
 
