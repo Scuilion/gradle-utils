@@ -6,6 +6,7 @@ import org.gradle.api.tasks.JavaExec
 
 import com.scuilion.gradle.plugins.utils.init.RunSimple
 import com.scuilion.gradle.plugins.utils.vim.Syntastic
+import com.scuilion.gradle.plugins.utils.debug.Pather
 
 class UtilsPlugin implements Plugin<Project> {
 
@@ -14,5 +15,6 @@ class UtilsPlugin implements Plugin<Project> {
     void apply(Project project) {
         RunSimple.addTask(project)
         Syntastic.addTask(project)
+        Pather.addTask(project)
     }
 }

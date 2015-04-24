@@ -1,17 +1,18 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'com.scuilion.gradle', name: 'utils', version: new BigDecimal(version) - new BigDecimal('0.1')
+    }
+}
+
 plugins {
     id "com.jfrog.bintray" version "1.0"
 }
 
-// buildscript {
-//     repositories {
-//         jcenter()
-//     }
-//     dependencies {
-//         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
-//     }
-// }
-
-//version '0.4'
+version '0.4'
 
 apply from: 'bintray.gradle'
 apply plugin: 'com.jfrog.bintray'
@@ -22,7 +23,6 @@ apply plugin: 'groovy'
 repositories {
     mavenCentral()
 }
-
 
 dependencies {
     compile gradleApi()
@@ -62,6 +62,15 @@ configurations {
     integrationTestRuntime.extendsFrom runtime
 }
 
+// task printClasspath{
+//     doLast{
+//         println sourceSets.main.compileClasspath
+//         sourceSets.test.compileClasspath.each{
+//             println it
+//         }
+//     }
+// }
+
 sourceSets {
     integrationTest {
         java {
@@ -90,3 +99,5 @@ task integrationTest(type:Test){
 }
 
 integrationTest.mustRunAfter test
+
+apply plugin: 'utils'
