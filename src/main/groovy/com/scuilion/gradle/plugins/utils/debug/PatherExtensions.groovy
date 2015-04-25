@@ -1,5 +1,5 @@
-package com.scuilion.gradle.plugins.utils.init
+package com.scuilion.gradle.plugins.utils.debug
 
-class PatherExtension {
-   //def String mainClass 
+class PatherExtensions {
+   def String sourceSetName 
 }

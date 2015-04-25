@@ -62,15 +62,6 @@ configurations {
     integrationTestRuntime.extendsFrom runtime
 }
 
-// task printClasspath{
-//     doLast{
-//         println sourceSets.main.compileClasspath
-//         sourceSets.test.compileClasspath.each{
-//             println it
-//         }
-//     }
-// }
-
 sourceSets {
     integrationTest {
         java {

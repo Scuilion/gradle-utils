@@ -9,7 +9,7 @@ class RunSimple {
     Project project 
 
     static void addTask(Project project){
-        project.extensions.create("runSimple", RunSimpleExtension)
+        project.extensions.create("runSimple", RunSimpleExtensions)
 
         project.task('runSimple', type: JavaExec ) {
             project.afterEvaluate{
