@@ -7,22 +7,33 @@ import org.gradle.api.UnknownDomainObjectException
 
 class Pather {
 
-    Project project 
-
     static void addTask(Project project){
+
         project.extensions.create("pather", PatherExtensions)
 
         project.task('printSourceSet') {
             project.afterEvaluate{
-                def sourceSetName = project.pather.sourceSetName?:'main'
-                if(project.sourceSets.findByName(sourceSetName)){
-                    project.sourceSets.getByName(sourceSetName).compileClasspath.each{
-                        println it
-                    }
-                }else{
-                    throw new UnknownDomainObjectException("'" + sourceSetName +"' is not found. Available Sourcesets: " + project.sourceSets) 
+                def sourceSetName = getSourceSetName(project)
+                checkSourceSetName(project, sourceSetName)
+                project.sourceSets.getByName(sourceSetName).compileClasspath.each{
+                    println it
                 }
             }
          }
+    }
+
+    static String getSourceSetName(Project project){
+        def sourceSetName = project.pather.sourceSetName?:'main'
+        if(project.hasProperty('sourceSetName')){
+            //set from command line
+            sourceSetName = project.ext.sourceSetName
+        }
+        return sourceSetName
+    }
+
+    static void checkSourceSetName(Project project, String sourceSetName){
+        if(project.sourceSets.findByName(sourceSetName) == null){
+            throw new UnknownDomainObjectException("'" + sourceSetName +"' is not found. Available Sourcesets: " + project.sourceSets) 
+        }
     }
 }
