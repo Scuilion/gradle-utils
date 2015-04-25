@@ -3,6 +3,7 @@ package com.scuilion.gradle.plugins.utils.init
 import org.gradle.api.Project
 import org.gradle.api.Plugin
 import org.gradle.api.tasks.JavaExec
+import com.scuilion.gradle.plugins.utils.UtilsProperties
 
 class RunSimple {
 
@@ -18,5 +19,7 @@ class RunSimple {
                 args = project.runSimple.args
             }
         }
+        project.tasks.runSimple.group = UtilsProperties.GROUP 
+        project.tasks.runSimple.description = "JavaExec wrapper. Set property 'runSimple.mainClass' and 'runSimple.args'"
     }
 }

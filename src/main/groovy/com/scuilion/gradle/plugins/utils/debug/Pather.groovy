@@ -4,6 +4,7 @@ import org.gradle.api.Project
 import org.gradle.api.Plugin
 import org.gradle.api.tasks.JavaExec
 import org.gradle.api.UnknownDomainObjectException
+import com.scuilion.gradle.plugins.utils.UtilsProperties
 
 class Pather {
 
@@ -11,7 +12,7 @@ class Pather {
 
         project.extensions.create("pather", PatherExtensions)
 
-        project.task('printSourceSet') {
+        project.task('printSourceSet'){
             project.afterEvaluate{
                 def sourceSetName = getSourceSetName(project)
                 checkSourceSetName(project, sourceSetName)
@@ -19,7 +20,9 @@ class Pather {
                     println it
                 }
             }
-         }
+        }
+        project.tasks.printSourceSet.group = UtilsProperties.GROUP 
+        project.tasks.printSourceSet.description = "Print source set. Defaults to 'main'. Set 'sourceSetName' property from cmd-line"
     }
 
     static String getSourceSetName(Project project){

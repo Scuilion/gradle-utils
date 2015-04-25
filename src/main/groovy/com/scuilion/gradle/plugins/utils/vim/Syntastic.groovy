@@ -2,6 +2,7 @@ package com.scuilion.gradle.plugins.utils.vim
 
 import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
+import com.scuilion.gradle.plugins.utils.UtilsProperties
 
 class Syntastic {
 
@@ -27,6 +28,8 @@ class Syntastic {
         }
         attachTo(project, 'compileJava')
         attachTo(project, 'compileGroovy')
+        project.tasks.createSyntastic.group = UtilsProperties.GROUP 
+        project.tasks.createSyntastic.description = "Attaches to the 'compileJava' and 'compileGroovy' tasks. Generates classpath and saves it as .syntastic_javac_config"
     }
 
     static private void attachTo(Project project, String lang){
