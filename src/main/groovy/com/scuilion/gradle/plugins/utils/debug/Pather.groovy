@@ -1,7 +1,6 @@
 package com.scuilion.gradle.plugins.utils.debug
 
 import org.gradle.api.Project
-import org.gradle.api.Plugin
 import org.gradle.api.tasks.JavaExec
 import org.gradle.api.UnknownDomainObjectException
 import com.scuilion.gradle.plugins.utils.UtilsProperties
@@ -12,10 +11,13 @@ class Pather {
 
         project.extensions.create("pather", PatherExtensions)
 
-        project.task('printSourceSet'){
+        project.task('printSourceSet') {
+            def sourceSetName 
             project.afterEvaluate{
-                def sourceSetName = getSourceSetName(project)
+                sourceSetName = getSourceSetName(project)
                 checkSourceSetName(project, sourceSetName)
+            }
+            doLast{
                 project.sourceSets.getByName(sourceSetName).compileClasspath.each{
                     println it
                 }

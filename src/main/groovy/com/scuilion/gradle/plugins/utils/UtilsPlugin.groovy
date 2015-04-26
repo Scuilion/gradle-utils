@@ -7,6 +7,7 @@ import org.gradle.api.tasks.JavaExec
 import com.scuilion.gradle.plugins.utils.init.RunSimple
 import com.scuilion.gradle.plugins.utils.vim.Syntastic
 import com.scuilion.gradle.plugins.utils.debug.Pather
+import com.scuilion.gradle.plugins.utils.debug.TestTiming
 
 class UtilsPlugin implements Plugin<Project> {
 
@@ -16,5 +17,11 @@ class UtilsPlugin implements Plugin<Project> {
         RunSimple.addTask(project)
         Syntastic.addTask(project)
         Pather.addTask(project)
+        TestTiming.addTask(project)
+    }
+    private void testTiming(Project project) {
+        if(hasProperty('timeTests')) {
+            gradle.addListener TestTiming()
+        }
     }
 }
