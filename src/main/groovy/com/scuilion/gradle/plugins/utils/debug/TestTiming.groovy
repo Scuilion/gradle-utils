@@ -13,7 +13,7 @@ public class TestTiming {
         }
 
         if(project.hasProperty('timeTests')) {
-            project.gradle.addListener new TestTiming()
+            project.rootProject.gradle.addListener new TestTimingListener()
         } 
 
         project.tasks.testTiming.group = UtilsProperties.GROUP 
