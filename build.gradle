@@ -17,6 +17,7 @@ version '0.4'
 apply from: 'bintray.gradle'
 apply plugin: 'com.jfrog.bintray'
 
+apply from: 'check.gradle'
 apply plugin: 'maven-publish'
 apply plugin: 'groovy'
 

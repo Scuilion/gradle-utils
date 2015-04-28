@@ -1,0 +1,5 @@
+apply plugin: 'codenarc'
+
+codenarc {
+    configFile = rootProject.file("codenarc.groovy")
+}
