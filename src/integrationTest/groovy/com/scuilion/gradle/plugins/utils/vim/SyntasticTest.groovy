@@ -2,32 +2,26 @@ package com.scuilion.gradle.plugins.utils.init
 
 import org.junit.Test
 
-import static org.junit.Assert.*
-import static org.hamcrest.Matchers.containsString
-
-import org.gradle.api.Project
 import org.gradle.tooling.GradleConnectionException
-import org.gradle.testfixtures.ProjectBuilder
 import org.gradle.tooling.GradleConnector
 
-class SyntasticTest{
-    
+class SyntasticTest {
+
     @Test
-    public void checkGeneate(){
+    void checkGeneate() {
         def integrationBuildLocation = new File(System.getProperty('integrationTest.location'), 'syntasticTest')
-        def connection = GradleConnector.newConnector().forProjectDirectory(integrationBuildLocation).connect();
-        def output = new ByteArrayOutputStream()
+        def connection = GradleConnector.newConnector().forProjectDirectory(integrationBuildLocation).connect()
         try {
             def build = connection.newBuild()
             build.forTasks('createSyntastic')
             build.run()
         } catch (Exception e) {
-            throw new GradleConnectionException("Build execution failed.", e);
+            throw new GradleConnectionException("Build execution failed.", e)
         } finally {
-            connection.close();
+            connection.close()
         }
         def syntasticConfig = new File(integrationBuildLocation, ".syntastic_javac_config")
-        assertTrue(syntasticConfig.exists())
+        assert syntasticConfig.exists()
     }
 
 }

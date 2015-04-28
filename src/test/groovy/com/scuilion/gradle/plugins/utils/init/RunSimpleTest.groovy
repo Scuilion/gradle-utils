@@ -12,7 +12,7 @@ class RunSimpleTest {
     @Test
     public void createBasicPlugin(){
         Project project = ProjectBuilder.builder().withName('RunSimplePlugin').build()
-        project.apply plugin: 'utils'
+        project.apply plugin: 'run-simple'
         def runSimpleTask = project.tasks.runSimple
         assert runSimpleTask instanceof JavaExec
     }
