@@ -1,19 +1,33 @@
 # gradle-utils
 
-A personal gradle plugin to work better.
+A gradle plugin to add common task to everyday projects
 
-##### Added Task 
+Run 'gradle tasks' to see list of added tasks under the 'Uitl tasks' group.
 
-* runSimple
+##### Active 
+
+* runSimple - simple wrapper around the ExecTask.
 
 Reference a main class in the build file
 ```groovy
 runSimple.mainClass = 'com.RunMain'
 ```
 
+* printSourceSet - defaults to main. Add property 'sourceSetName' to cmd line to specify a sourceSet.
+```bash
+gradle printSourceSet -PsourceSetName=test
+```
+
+* testTiming - adds very simplified timing to individual test. 
+```bash
+gradle test -PtimeTests
+```
+
+##### Passive
 * createSyntastic
 
 Creates a .syntastic_javac_config file in the root of the project.
 
+___
 This is a post processing plugin and must be applied towards the end of your build file.
 
