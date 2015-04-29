@@ -24,7 +24,7 @@ gradle test -PtimeTests
 ```
 
 ##### Passive
-* createSyntastic
+* createSyntastic - for working in vim with the [syntastic](https://github.com/scrooloose/syntastic) syntastic checking plugin.
 
 Creates a .syntastic_javac_config file in the root of the project.
 
