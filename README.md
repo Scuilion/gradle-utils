@@ -2,6 +2,21 @@
 
 A gradle plugin to add common task to everyday projects
 
+
+##### Using the Plugin
+```groovy
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.+'
+    }
+}
+
+apply plugin: 'utils'
+```
+
 Run 'gradle tasks' to see list of added tasks under the 'Uitl tasks' group.
 
 ##### Active 
