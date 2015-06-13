@@ -12,8 +12,6 @@ plugins {
     id "com.jfrog.bintray" version "1.0"
 }
 
-version '0.4'
-
 apply from: 'bintray.gradle'
 apply plugin: 'com.jfrog.bintray'
 
@@ -54,7 +52,6 @@ publishing {
     }
 }
 
-//Add funtional test
 configurations {
     integrationTestCompile.extendsFrom testCompile
     integrationTestRuntime.extendsFrom testRuntime
