@@ -5,7 +5,9 @@ ruleset {
         'ElseBlockBraces' enabled: false
     }
     ruleset('rulesets/concurrency.xml')
-    ruleset('rulesets/convention.xml')
+    ruleset('rulesets/convention.xml') {
+        'NoDef' enabled: false
+    }
     ruleset('rulesets/design.xml')
     ruleset('rulesets/dry.xml')
     ruleset('rulesets/formatting.xml') {
