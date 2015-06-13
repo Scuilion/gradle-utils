@@ -1,0 +1,11 @@
+language: groovy
+install: ./gradlew resolveAllDependencies assemble
+script: ./gradlew clean build
+notifications:
+  email: false
+branches:
+  only:
+    - transition
+env:
+  global:
+  - TERM=dumb
