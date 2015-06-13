@@ -33,7 +33,7 @@ ruleset {
         'SystemExit' enabled: false
         'JavaIoPackageAccess' enabled: false
     }
-    ruleset('rulesets/size.xml')
+    //ruleset('rulesets/size.xml')
     ruleset('rulesets/unnecessary.xml') {
         // disabling due to code narc bug => http://sourceforge.net/tracker/?func=detail&atid=1126573&aid=3524882&group_id=250145
         'UnnecessaryPackageReference' enabled: false
