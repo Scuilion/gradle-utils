@@ -1,8 +1,6 @@
 package com.scuilion.gradle.plugins.utils.debug
 
 import org.gradle.api.Project
-import org.gradle.api.Plugin
-import org.gradle.api.tasks.JavaExec
 import org.gradle.testfixtures.ProjectBuilder
 
 import org.junit.Test
@@ -10,7 +8,7 @@ import org.junit.Test
 class PatherTest {
 
     @Test
-    public void noSourceSetSpecified(){
+    void noSourceSetSpecified() {
         Project project = ProjectBuilder.builder().withName('PatherPluginTest').build()
         project.apply plugin: 'utils'
         Pather pather = new Pather()
@@ -18,7 +16,7 @@ class PatherTest {
     }
 
     @Test
-    public void setItOnAProperty(){
+    void setItOnAProperty() {
         Project project = ProjectBuilder.builder().withName('PatherPluginTest').build()
         project.apply plugin: 'utils'
         project.ext.sourceSetName = 'special'

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.scuilion.gradle.plugins.init.RunSimpleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-06-13T20:08:05" hostname="kevino-Parallels-Virtual-Platform" time="0.033">
+  <properties/>
+  <testcase name="testABasicPlugin" classname="com.scuilion.gradle.plugins.init.RunSimpleTest" time="0.033"/>
+  <system-out><![CDATA[15:08:05.833 [Test worker] DEBUG o.g.a.i.a.m.DefaultLocalMavenRepositoryLocator - No local repository in Settings file defined. Using default path: /home/kevino/.m2/repository
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

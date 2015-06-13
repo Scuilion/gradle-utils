@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.scuilion.gradle.plugins.utils.debug.PatherTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2015-06-13T20:08:04" hostname="kevino-Parallels-Virtual-Platform" time="1.264">
+  <properties/>
+  <testcase name="noSourceSetSpecified" classname="com.scuilion.gradle.plugins.utils.debug.PatherTest" time="1.231"/>
+  <testcase name="setItOnAProperty" classname="com.scuilion.gradle.plugins.utils.debug.PatherTest" time="0.033"/>
+  <system-out><![CDATA[15:08:05.667 [Test worker] DEBUG o.g.a.i.a.m.DefaultLocalMavenRepositoryLocator - No local repository in Settings file defined. Using default path: /home/kevino/.m2/repository
+15:08:05.798 [Test worker] DEBUG o.g.a.i.a.m.DefaultLocalMavenRepositoryLocator - No local repository in Settings file defined. Using default path: /home/kevino/.m2/repository
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
