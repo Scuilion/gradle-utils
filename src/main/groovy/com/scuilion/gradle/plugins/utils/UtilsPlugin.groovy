@@ -16,9 +16,4 @@ class UtilsPlugin implements Plugin<Project> {
         Pather.addTask(project)
         TestTiming.addTask(project)
     }
-    private void testTiming(Project project) {
-        if (hasProperty('timeTests')) {
-            gradle.addListener TestTiming()
-        }
-    }
 }

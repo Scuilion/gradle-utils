@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath group: 'com.scuilion.gradle', name: 'utils', version: new BigDecimal(version) - new BigDecimal('0.1')
+        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.3' //new BigDecimal(version) - new BigDecimal('0.1')
     }
 }
 
@@ -81,12 +81,16 @@ task integrationTest(type:Test){
     systemProperties['version'] = version
 
     testClassesDir = sourceSets.integrationTest.output.classesDir
-    classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.main.output 
+    classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.main.output
 
     getReports().getHtml().setDestination(new File("$project.reporting.baseDir", 'integrationTest'))
-    getReports().getJunitXml().setDestination(new File("$project.buildDir", 'integration-results')) 
+    getReports().getJunitXml().setDestination(new File("$project.buildDir", 'integration-results'))
 }
 
 integrationTest.mustRunAfter test
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
 
 apply plugin: 'utils'

@@ -5,7 +5,9 @@ ruleset {
         'ElseBlockBraces' enabled: false
     }
     ruleset('rulesets/concurrency.xml')
-    ruleset('rulesets/convention.xml')
+    ruleset('rulesets/convention.xml') {
+        'NoDef' enabled: false
+    }
     ruleset('rulesets/design.xml')
     ruleset('rulesets/dry.xml')
     ruleset('rulesets/formatting.xml') {
@@ -33,7 +35,7 @@ ruleset {
         'SystemExit' enabled: false
         'JavaIoPackageAccess' enabled: false
     }
-    ruleset('rulesets/size.xml')
+    //ruleset('rulesets/size.xml')
     ruleset('rulesets/unnecessary.xml') {
         // disabling due to code narc bug => http://sourceforge.net/tracker/?func=detail&atid=1126573&aid=3524882&group_id=250145
         'UnnecessaryPackageReference' enabled: false
