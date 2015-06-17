@@ -1,5 +1,6 @@
 language: groovy
-install:
+before_install:
+ - chmod +x gradlew
 script: ./gradlew clean build
 notifications:
   email: false
