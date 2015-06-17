@@ -1,5 +1,5 @@
 language: groovy
-install: ./gradlew resolveAllDependencies assemble
+install:
 script: ./gradlew clean build
 notifications:
   email: false
