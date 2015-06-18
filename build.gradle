@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.5' //new BigDecimal(version) - new BigDecimal('0.1')
+        //classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.5' //new BigDecimal(version) - new BigDecimal('0.1')
     }
 }
 
