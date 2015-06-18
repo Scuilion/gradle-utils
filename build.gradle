@@ -4,13 +4,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.3' //new BigDecimal(version) - new BigDecimal('0.1')
+        classpath group: 'com.scuilion.gradle', name: 'utils', version: '0.5' //new BigDecimal(version) - new BigDecimal('0.1')
     }
 }
 
 
 plugins {
-    id "com.jfrog.bintray" version "1.1"
+    id "com.jfrog.bintray" version "1.2"
 }
 
 apply from: 'bintray.gradle'
