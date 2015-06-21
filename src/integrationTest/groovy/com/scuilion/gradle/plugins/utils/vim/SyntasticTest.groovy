@@ -39,6 +39,11 @@ class SyntasticTest {
     @Test
     void nixSpecificCheck() {
         assumeFalse(SystemUtils.IS_OS_WINDOWS)
+        assert new File(listOfFiles[0]).exists()
+        assert new File(listOfFiles[0]).isFile()
+        assert new File(listOfFiles[1]).exists() //because C: is a file
+        assert new File(listOfFiles[1]).isFile() //because C: is a file
+
         assert !SYNTASTIC_CONFIG.text.contains("\\")
         assert !SYNTASTIC_CONFIG.text.contains(';')
     }
@@ -46,7 +51,6 @@ class SyntasticTest {
     @Test
     void windowsSpecificCheck() {
         assumeTrue(SystemUtils.IS_OS_WINDOWS)
-        //def listOfFiles = listOfFiles
         assert new File(listOfFiles[0]).exists()
         assert new File(listOfFiles[0]).isFile()
         assert new File(listOfFiles[1]).exists() //because C: is a file
@@ -61,7 +65,7 @@ class SyntasticTest {
     }
 
     private getListOfFiles() {
-        return matcher[0][1].tokenize(";")
+        return matcher[0][1].tokenize(File.pathSeparator)
     }
 
     private getMatcher() {
