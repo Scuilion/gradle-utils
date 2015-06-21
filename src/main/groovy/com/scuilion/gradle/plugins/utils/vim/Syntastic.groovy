@@ -5,11 +5,9 @@ import com.scuilion.gradle.plugins.utils.UtilsProperties
 import org.apache.commons.lang3.SystemUtils
 
 class Syntastic {
-
     private static final String SYNTASTIC_TASK_NAME = 'createSyntastic'
 
     static void addTask(Project project) {
-        println 'X'*40
         project.task(SYNTASTIC_TASK_NAME) {
             def classpathFiles = [] as Set
             def addJars = { proj ->
@@ -45,29 +43,33 @@ class Syntastic {
     }
 
     static private String getClassPathListed(def classpathFiles) {
-        def classpathList = classpathFiles.collect {
-            println it.canonicalPath
-            it.canonicalPath.replaceAll('\\\\', getPathSeperator()) //"\\\\")
-        }
-        def joinChar = getJoinCharacter()
-        return 'let g:syntastic_java_javac_classpath = "' + classpathList.join(joinChar) + '"'
+        //def classpathList = getUnifiedPath(classpathFiles)  assume the path separator is correct.
+        return 'let g:syntastic_java_javac_classpath = "' + classpathFiles.join(joinCharacter) + '"'
     }
 
-    static private String getPathSeperator() {
-        return File.pathSeparator
-//         def seperatory = '/'
+//     static private String getUnifiedPath(def classpathFiles) {
+//         classpathFiles.collect {
+//             println it.canonicalPath
+//             it.canonicalPath.replaceAll('\\\\', pathSeperator)
+//         }
+//     }
+// 
+//     static private String getPathSeperator() {
+//         //return File.separator
+//         def seperator = '/'
 //         if (SystemUtils.IS_OS_WINDOWS) {
-//             seperatory = "\\\\"
+//             seperator = "\\\\"
 //         } 
-//         return seperatory 
-    }
+//         return seperator 
+//     }
 
     static private String getJoinCharacter() {
-         def joinCharacter = ':'
-         if (SystemUtils.IS_OS_WINDOWS) {
-             joinCharacter = ';'
-         } 
-         return joinCharacter 
+        return File.pathSeparator
+//          def joinCharacter = ':'
+//          if (SystemUtils.IS_OS_WINDOWS) {
+//              joinCharacter = ';'
+//          } 
+//          return joinCharacter 
     }
 
     static private void addSrcDirs(project, classpathFiles) {
