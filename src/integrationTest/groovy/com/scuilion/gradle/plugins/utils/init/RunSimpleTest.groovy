@@ -1,7 +1,7 @@
 package com.scuilion.gradle.plugins.utils.init
 
 import org.junit.Test
-import org.junit.Assert.assertThat
+import static org.junit.Assert.assertThat
 import static org.hamcrest.Matchers.containsString
 
 import org.gradle.tooling.GradleConnectionException

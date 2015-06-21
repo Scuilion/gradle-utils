@@ -1,7 +1,7 @@
 bintray {
     user = bintrayUser
     key = bintrayKey
-    publications = ['maven']
+    publications = ['mavenStuff']
 
     dryRun = false //Whether to run this as dry-run, without deploying
     publish = false //If version should be auto published after an upload
