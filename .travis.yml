@@ -6,7 +6,7 @@ notifications:
   email: false
 branches:
   only:
-    - transition
+    - master
 env:
   global:
   - TERM=dumb
