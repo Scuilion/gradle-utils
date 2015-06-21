@@ -11,13 +11,13 @@ import org.apache.commons.lang3.SystemUtils
 
 class SyntasticTest {
 
-    private static final File INTEGRATION_BUILD_LOCATION = 
+    private static final File INTEGRATION_BUILD_LOCATION =
         new File(System.getProperty('integrationTest.location'), 'syntasticTest')
     private static final File SYNTASTIC_CONFIG = new File(INTEGRATION_BUILD_LOCATION, ".syntastic_javac_config")
 
     @BeforeClass
     static void checkGeneate() {
-        def connection = 
+        def connection =
             GradleConnector.newConnector().forProjectDirectory(INTEGRATION_BUILD_LOCATION).connect()
         try {
             def build = connection.newBuild()

@@ -5,6 +5,7 @@ import com.scuilion.gradle.plugins.utils.UtilsProperties
 import org.apache.commons.lang3.SystemUtils
 
 class Syntastic {
+
     private static final String SYNTASTIC_TASK_NAME = 'createSyntastic'
 
     static void addTask(Project project) {
@@ -53,14 +54,14 @@ class Syntastic {
 //             it.canonicalPath.replaceAll('\\\\', pathSeperator)
 //         }
 //     }
-// 
+//
 //     static private String getPathSeperator() {
 //         //return File.separator
 //         def seperator = '/'
 //         if (SystemUtils.IS_OS_WINDOWS) {
 //             seperator = "\\\\"
-//         } 
-//         return seperator 
+//         }
+//         return seperator
 //     }
 
     static private String getJoinCharacter() {
@@ -68,8 +69,8 @@ class Syntastic {
 //          def joinCharacter = ':'
 //          if (SystemUtils.IS_OS_WINDOWS) {
 //              joinCharacter = ';'
-//          } 
-//          return joinCharacter 
+//          }
+//          return joinCharacter
     }
 
     static private void addSrcDirs(project, classpathFiles) {
