@@ -1,4 +1,4 @@
-# gradle-utils
+# gradle-utils [![Build Status](https://travis-ci.org/Scuilion/gradle-utils.svg?branch=master)](https://travis-ci.org/Scuilion/gradle-utils)
 
 A gradle plugin to add common task to everyday projects
 
