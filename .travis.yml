@@ -1,7 +1,7 @@
 language: groovy
 before_install:
  - chmod +x gradlew
-script: ./gradlew clean build integrationTest
+script: ./gradlew clean build fT
 notifications:
   email: false
 branches:
