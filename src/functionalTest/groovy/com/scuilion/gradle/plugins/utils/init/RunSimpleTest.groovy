@@ -4,12 +4,9 @@ import spock.lang.*
 
 import org.junit.rules.TemporaryFolder
 
-import org.junit.Test
 import org.junit.ClassRule
 
 import org.gradle.testkit.runner.GradleRunner
-import org.gradle.tooling.GradleConnectionException
-import org.gradle.tooling.GradleConnector
 
 class RunSimpleTest extends Specification {
 
